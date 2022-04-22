@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Datum-Service-Interface-Bundle
+Bundle-SymbolicName: Datum-Service-Interface
+Bundle-Version: 1.0.0
+Automatic-Module-Name: Datum-Service-Interface
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: datumservice;x-friends:="Datum-Service-Impl#Datum-Service-Konsument"

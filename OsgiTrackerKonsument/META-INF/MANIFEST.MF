@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Datum-Service-Konsument-Bundle
+Bundle-SymbolicName: Datum-Service-Konsument
+Bundle-Version: 1.0.0
+Bundle-Activator: datumservice.consumer.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: Datum-Service-Konsument
+Import-Package: datumservice,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker;version="1.5.2"
+Bundle-ActivationPolicy: lazy

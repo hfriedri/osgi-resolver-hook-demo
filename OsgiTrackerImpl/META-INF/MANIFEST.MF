@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Datum-Service-Impl-Bundle
+Bundle-SymbolicName: Datum-Service-Impl
+Bundle-Version: 1.0.0
+Bundle-Activator: datumservice.impl.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: Datum-Service-Impl
+Import-Package: datumservice,
+ org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy

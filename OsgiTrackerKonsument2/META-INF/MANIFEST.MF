@@ -7,6 +7,8 @@ Bundle-Activator: datumservice.consumer.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: Datum-Service-Konsument-2
 Import-Package: datumservice,
+ datumservice.util,
+ datumservice.models,
  org.osgi.framework;version="1.3.0",
  org.osgi.util.tracker;version="1.5.2"
 Bundle-ActivationPolicy: lazy

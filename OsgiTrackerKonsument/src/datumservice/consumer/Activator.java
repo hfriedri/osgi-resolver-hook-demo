@@ -7,6 +7,7 @@ import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 import datumservice.DatumService;
+import datumservice.util.Utils;
 
 public class Activator implements BundleActivator
 {
@@ -39,6 +40,7 @@ public class Activator implements BundleActivator
          });
 
       datumServiceTracker.open();
+      System.out.println(Utils.getString());
       System.out.println( context.getBundle().getSymbolicName() +  " gestartet und Tracker geoeffnet." );
    }
 

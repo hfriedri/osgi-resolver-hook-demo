@@ -5,4 +5,7 @@ Bundle-SymbolicName: Datum-Service-Interface
 Bundle-Version: 1.0.0
 Automatic-Module-Name: Datum-Service-Interface
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: datumservice;x-friends:="Datum-Service-Impl#Datum-Service-Konsument"
+Export-Package: datumservice;x-friends:="Datum-Service-Impl,Datum-Service-Konsument",
+ datumservice.util,
+ datumservice.util2;x-internal:=true,
+ datumservice.models;x-friends:="Datum-Service-Impl,Datum-Service-Konsument-2"

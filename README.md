@@ -1,0 +1,1 @@
+# osgi-resolver-hook-demo

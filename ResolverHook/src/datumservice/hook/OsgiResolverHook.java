@@ -1,4 +1,4 @@
-package de.cstx.its.demo.library;
+package datumservice.hook;
 
 import java.util.Collection;
 import java.util.Dictionary;
@@ -8,7 +8,7 @@ import org.osgi.framework.wiring.BundleCapability;
 import org.osgi.framework.wiring.BundleRequirement;
 import org.osgi.framework.wiring.BundleRevision;
 
-public class FiResolverHook implements ResolverHook {
+public class OsgiResolverHook implements ResolverHook {
 	
 	@Override
 	public void end() {

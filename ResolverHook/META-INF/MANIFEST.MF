@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-Description: Hook bundle for resolverhook
+Bundle-ManifestVersion: 2
+Bundle-Name: ResolverHook-Bundle
+Bundle-SymbolicName: ResolverHook-Bundle
+Bundle-Version: 1.0.0
+Automatic-Module-Name: Datum-Service-Interface
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: 
+ org.osgi.framework;version="1.9.0",
+ org.osgi.framework.hooks.resolver;version="1.0.0",
+ org.osgi.framework.wiring;version="1.2.0"
+Export-Package: 
+ datumservice.hook;version="1.0.0";uses:="org.osgi.framework.hooks.resolver,org.osgi.framework.wiring"

@@ -1,7 +1,6 @@
 package de.cstx.its.demo.library;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,11 +10,8 @@ import java.util.stream.Stream;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
-import org.osgi.framework.Constants;
-import org.osgi.framework.hooks.resolver.ResolverHookFactory;
 import org.osgi.framework.launch.Framework;
 import org.osgi.framework.launch.FrameworkFactory;
-import org.osgi.framework.wiring.FrameworkWiring;
 
 public class OsgiStarter {
 
@@ -28,7 +24,7 @@ public class OsgiStarter {
 		
 		uninstallBundles(framework);
 		
-		registerResolverHook(framework);
+		//registerResolverHook(framework);
 		
 		installBundles(framework);
 		
@@ -56,9 +52,9 @@ public class OsgiStarter {
 		return framework;
 	}
 
-	private static void registerResolverHook(Framework framework) {
-		framework.getBundleContext().registerService(ResolverHookFactory.class.getName(), new FiResolverHookFactory(), null);
-	}
+	//private static void registerResolverHook(Framework framework) {
+		//framework.getBundleContext().registerService(ResolverHookFactory.class.getName(), new FiResolverHookFactory(), null);
+	//}
 
 	private static void installBundles(Framework framework) {
 		List<String> bundleFiles = listFilesUsingJavaIO("bundles\\plugins");
@@ -85,14 +81,42 @@ public class OsgiStarter {
 		System.out.println("Stoppen beendet.");
 	}
 
-	private static void refreshBundles(Framework framework) {
-		System.out.println("Refresh Bundles");
-		framework.getBundleContext().getBundle(Constants.SYSTEM_BUNDLE_LOCATION).adapt(FrameworkWiring.class).refreshBundles(Arrays.asList(framework.getBundleContext().getBundles()));
-	}
+//	private static void refreshBundles(Framework framework) {
+//		System.out.println("Refresh Bundles");
+//		framework.getBundleContext().getBundle(Constants.SYSTEM_BUNDLE_LOCATION).adapt(FrameworkWiring.class).refreshBundles(Arrays.asList(framework.getBundleContext().getBundles()));
+//	}
 
 	private static void startBundles(Framework framework) {
+
 		for (Bundle bundle : framework.getBundleContext().getBundles()) {
+			if (bundle.getSymbolicName().equals("org.eclipse.osgi")) {
+				try {
+					bundle.start(1);
+					System.out.println("start bundle : " + bundle.getSymbolicName());
+				} catch (BundleException e) {
+					System.err.println("start bundle : " + bundle.getSymbolicName() + " failed! " + e.getMessage());
+				}
+			}
+			if (bundle.getSymbolicName().equals("datumservice.hooks.resolver-hook-bundle-maven")) {
+				try {
+					bundle.start(2);
+					System.out.println("start bundle : " + bundle.getSymbolicName());
+				} catch (BundleException e) {
+					System.err.println("start bundle : " + bundle.getSymbolicName() + " failed! " + e.getMessage());
+				}
+			}
+		}
+		
+		for (Bundle bundle : framework.getBundleContext().getBundles()) {
+			
+			if (bundle.getSymbolicName().equals("datumservice.hooks.resolver-hook-bundle-maven") || bundle.getSymbolicName().equals("org.eclipse.osgi")) {
+				continue;
+			}
+			
 			try {
+				if (bundle.getSymbolicName().equals("ResolverHook-Bundle")) {
+					bundle.start(3);
+				}
 				bundle.start();
 				System.out.println("start bundle : " + bundle.getSymbolicName());
 			} catch (BundleException e) {
